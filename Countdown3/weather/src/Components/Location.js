@@ -8,6 +8,8 @@ import '../App.css';
 function Location(props) {
     const openweather_key = process.env.REACT_APP_openweather_key;
 
+    console.log(props);
+
     const url = new URL("http://api.openweathermap.org/geo/1.0/zip")
     url.searchParams.append("zip", props.location);
     url.searchParams.append("appid", openweather_key);

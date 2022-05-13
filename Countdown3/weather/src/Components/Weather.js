@@ -20,15 +20,17 @@ function Weather (props) {
         <>
             <TextField id="location" label="Location" type="search" helperText="Zip Code" inputRef={textFieldRef}/>
             <Button variant="contained" size="large" onClick={() => handleClick(textFieldRef.current.value)}>Log Input</Button>
-
-            <Button variant="contained" size="large" endIcon={<LocationOnIcon onClick={() => handleClick("Current Location")}/>}>
-                Current Location
-            </Button>
-
-            <Location>location={loc}</Location>
         </>
     </>
     );
 }
 
 export default Weather;
+
+
+/*
+<Button variant="contained" size="large" onClick={() => handleClick("Current Location")} endIcon={<LocationOnIcon />} >
+Current Location
+</Button>
+*/
+//{loc && <Location>location={loc}</Location>}

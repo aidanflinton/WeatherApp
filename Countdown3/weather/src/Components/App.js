@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import {useEffect, useState} from 'react';
 import Weather from './Weather.js'
+import LoadNews from './LoadNews.js'
 
 function App() {
   return (
@@ -12,8 +13,16 @@ function App() {
       <>
         <Weather></Weather>
       </>
+      <header className = "App-header">
+        News
+      </header>
+      <>
+        <LoadNews></LoadNews>
+      </>
     </div>
   );
 }
 
 export default App;
+
+//<Weather></Weather>
