@@ -5,7 +5,11 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import ShareIcon from '@mui/icons-material/Share';
 import { useState, useEffect, useRef } from "react";
 import '../App.css';
 
@@ -28,38 +32,63 @@ function News (props) {
       }, [])
 
       if(newsData){
-        //console.log(newsData[0].media.media-metadata[0].url);
+        console.log(newsData);
+        console.log(newsData[15].media[0]["media-metadata"][0].url);
+
+        newsData.forEach((element, index) =>  {
+            if(element.media.length === 0){
+                newsData[index].media = [
+                    {
+                        caption:"No image provided",
+                        "media-metadata": [
+                            {
+                                url:"https://blog.logomyway.com/wp-content/uploads/2021/10/new-york-times-symbol.jpg"
+                            }
+                        ]
+                    }
+                ];
+            }
+          });
+
+
         return (
         <div className="App">
+            <Grid
+                container
+                spacing={2}
+                direction="row"
+                justify="flex-start"
+                alignItems="flex-start"
+            >
            {newsData.map((newsItem)=> 
-           
-            <Card sx={{ minWidth: 275 }}>
-            <CardMedia
-                component="img"
-                height="140"
-                image="{newsItem.media.media-metadata[0].url}"
-                alt="green iguana"
-            />
-            <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                {newsItem.title}
-                </Typography>
-                <Typography variant="h5" component="div">
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {newsItem.byline}
-                </Typography>
-                <Typography variant="body2">
-                    {newsItem.abstract}
-                </Typography>
 
-            </CardContent>
-            <CardActions>
-                <Button size="small">Learn More</Button>
-            </CardActions>
+            <Grid item xs={12} sm={6} md={3} key={newsData.indexOf(newsItem)}>
+
+            <Card sx={{ minWidth: 275, maxWidth: 345}}>
+                <CardMedia
+                  component="img"
+                  src={newsItem.media[0]["media-metadata"][0].url}
+                  alt={newsItem.media[0].caption}
+                />
+                <CardHeader 
+                    title={newsItem.title}
+                    subheader={newsItem.byline}
+                />
+                <CardContent>
+                    <Typography variant="body">
+                        {newsItem.abstract}
+                    </Typography>
+
+                </CardContent>
+                <CardActions>
+                    <IconButton href={newsItem.url} aria-label="share">
+                        <ShareIcon />
+                    </IconButton>
+                </CardActions>
             </Card>
-           
+            </Grid>
            )}
+           </Grid>
         </div>
         );
       }
