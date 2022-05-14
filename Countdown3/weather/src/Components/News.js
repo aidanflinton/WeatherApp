@@ -1,6 +1,4 @@
 import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -33,7 +31,6 @@ function News (props) {
 
       if(newsData){
         console.log(newsData);
-        console.log(newsData[15].media[0]["media-metadata"][0].url);
 
         newsData.forEach((element, index) =>  {
             if(element.media.length === 0){
@@ -102,10 +99,3 @@ function News (props) {
 }
 
 export default News;
-
-
-/*
-<Button variant="contained" size="large" onClick={() => handleClick("Current Location")} endIcon={<LocationOnIcon />} >
-Current Location
-</Button>
-*/

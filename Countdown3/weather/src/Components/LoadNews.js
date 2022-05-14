@@ -11,7 +11,6 @@ function LoadNews (props) {
 
     const handleClick = (param) => {
         setBtn(true);
-        setBtn(true);
     }
 
     return (

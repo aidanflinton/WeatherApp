@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import {useEffect, useState} from 'react';
-import Weather from './Weather.js'
+import LocInput from './LocInput.js'
 import LoadNews from './LoadNews.js'
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
         Weather
       </header>
       <>
-        <Weather></Weather>
+        <LocInput></LocInput>
       </>
       <header className = "App-header">
         News
@@ -24,5 +24,3 @@ function App() {
 }
 
 export default App;
-
-//<Weather></Weather>

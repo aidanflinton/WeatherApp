@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import '../App.css';
 import Location from './Location.js';
 
-function Weather (props) {
+function LocInput (props) {
     const [loc, setLoc] = useState(null);
 
     const textFieldRef = useRef();
@@ -20,12 +20,14 @@ function Weather (props) {
         <>
             <TextField id="location" label="Location" type="search" helperText="Zip Code" inputRef={textFieldRef}/>
             <Button variant="contained" size="large" onClick={() => handleClick(textFieldRef.current.value)}>Log Input</Button>
+
+            {loc && <Location location={loc}/>}
         </>
     </>
     );
 }
 
-export default Weather;
+export default LocInput;
 
 
 /*
@@ -33,4 +35,3 @@ export default Weather;
 Current Location
 </Button>
 */
-//{loc && <Location>location={loc}</Location>}

@@ -8,10 +8,10 @@ import '../App.css';
 function Location(props) {
     const openweather_key = process.env.REACT_APP_openweather_key;
 
-    console.log(props);
+    console.log(props.location);
 
     const url = new URL("http://api.openweathermap.org/geo/1.0/zip")
-    url.searchParams.append("zip", props.location);
+    url.searchParams.append("zip", props.location + ",US");
     url.searchParams.append("appid", openweather_key);
 
 
@@ -28,10 +28,12 @@ function Location(props) {
       }, [])
 
       if(locData){
+        console.log(locData);
+        console.log(url);
         return (
         <div className="App">
-            {locData.lat};
-            {locData.lon};
+            {locData.lat}
+            {locData.lon}
         </div>
         );
       }
