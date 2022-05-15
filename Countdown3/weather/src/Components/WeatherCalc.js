@@ -1,41 +1,37 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useState, useEffect, useRef } from "react";
 import '../App.css';
-import WeatherCalc from './WeatherCalc.js';
 
-function Location(props) {
+function WeatherCalc (props) {
     const openweather_key = process.env.REACT_APP_openweather_key;
 
-    console.log(props.location);
-
-    const url = new URL("http://api.openweathermap.org/geo/1.0/zip")
-    url.searchParams.append("zip", props.location + ",US");
+    const url = new URL("https://api.openweathermap.org/data/2.5/onecall")
+    url.searchParams.append("lat", props.latitude);
+    url.searchParams.append("lon", props.longitude);
     url.searchParams.append("appid", openweather_key);
 
 
-    const [locData, setLocData] = useState();
+    const [weatherData, setWeatherData] = useState();
 
-    const generateLocation = () => {
+    const generateWeather = () => {
         fetch(url)
         .then((res) => res.json())
-        .then((data) => setLocData(data));
+        .then((data) => setWeatherData(data));
       }
     
       useEffect(() => {
-        generateLocation()
+        generateWeather()
       }, [])
 
-      if(locData){
-        console.log(locData);
+      if(weatherData){
+        console.log(weatherData);
         console.log(url);
         return (
         <div className="App">
-            {locData.lat}
-            {locData.lon}
-            <WeatherCalc longitude={locData.lat} latitude={locData.lon}/>
+            {weatherData.current.clouds}
         </div>
         );
       }
@@ -46,6 +42,6 @@ function Location(props) {
             </>
           );
       }
-  }
-  
-  export default Location;
+}
+
+export default WeatherCalc;

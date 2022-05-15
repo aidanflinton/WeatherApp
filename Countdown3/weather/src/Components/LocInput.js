@@ -17,12 +17,10 @@ function LocInput (props) {
 
     return(
     <>
-        <>
-            <TextField id="location" label="Location" type="search" helperText="Zip Code" inputRef={textFieldRef}/>
-            <Button variant="contained" size="large" onClick={() => handleClick(textFieldRef.current.value)}>Log Input</Button>
+        <TextField id="location" label="Location" type="search" helperText="Zip Code" inputRef={textFieldRef}/>
+        <Button variant="contained" size="large" onClick={() => handleClick(textFieldRef.current.value)}>Log Input</Button>
 
-            {loc && <Location location={loc}/>}
-        </>
+        {loc && <Location location={loc}/>}
     </>
     );
 }
