@@ -1,8 +1,5 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import '../App.css';
 import WeatherCalc from './WeatherCalc.js';
 
@@ -35,7 +32,7 @@ function Location(props) {
         <div className="App">
             {locData.lat}
             {locData.lon}
-            <WeatherCalc longitude={locData.lat} latitude={locData.lon}/>
+            <WeatherCalc longitude={locData.lon} latitude={locData.lat}/>
         </div>
         );
       }

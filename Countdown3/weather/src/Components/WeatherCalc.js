@@ -1,9 +1,7 @@
 import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 import '../App.css';
+import WeatherDisp from './WeatherDisp.js';
 
 function WeatherCalc (props) {
     const openweather_key = process.env.REACT_APP_openweather_key;
@@ -12,6 +10,7 @@ function WeatherCalc (props) {
     url.searchParams.append("lat", props.latitude);
     url.searchParams.append("lon", props.longitude);
     url.searchParams.append("appid", openweather_key);
+    url.searchParams.append("units", "imperial");
 
 
     const [weatherData, setWeatherData] = useState();
@@ -29,9 +28,14 @@ function WeatherCalc (props) {
       if(weatherData){
         console.log(weatherData);
         console.log(url);
+
+        let currentData = weatherData.current;
+        let hourlyData = weatherData.hourly;
+        let dailyData = weatherData.daily;
+
         return (
         <div className="App">
-            {weatherData.current.clouds}
+            <WeatherDisp weather={[currentData, hourlyData, dailyData]} />
         </div>
         );
       }

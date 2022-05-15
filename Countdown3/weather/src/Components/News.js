@@ -6,9 +6,9 @@ import CardMedia from '@mui/material/CardMedia';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import '../App.css';
 
 function News (props) {

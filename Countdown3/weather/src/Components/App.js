@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css';
-import {useEffect, useState} from 'react';
 import LocInput from './LocInput.js'
 import LoadNews from './LoadNews.js'
 

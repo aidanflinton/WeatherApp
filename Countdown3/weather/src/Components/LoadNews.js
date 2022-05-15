@@ -1,9 +1,7 @@
 import * as React from 'react';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import '../App.css';
-import { fabClasses } from '@mui/material';
 import News from './News.js'
 
 function LoadNews (props) {

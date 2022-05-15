@@ -1,8 +1,8 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { useState, useEffect, useRef } from "react";
+//import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { useState, useRef } from "react";
 import '../App.css';
 import Location from './Location.js';
 
