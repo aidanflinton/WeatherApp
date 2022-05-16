@@ -12,25 +12,49 @@ import '../App.css';
 function WeatherDisp (props) {
     return(
         <div className="App">
-            
+            <Grid
+                container
+                spacing={2}
+                direction="row"
+                alignItems="center"
+                justify="center"
+            >
+           {props.timeFrame.map((weatherItem)=> 
+
+            <Grid item xs={12} sm={6} md={3} key={props.timeFrame.indexOf(weatherItem)}>
+
             <Card sx={{ minWidth: 275, maxWidth: 345}}>
                 <CardMedia
-                  component="img"
-                  src= "http://openweathermap.org/img/wn/10d@2x.png"
+                    component="img"
+                    src={"http://openweathermap.org/img/wn/"+ weatherItem.weather[0].icon+"@2x.png"}
+                    alt={weatherItem.weather[0].description}
                 />
                 <CardHeader 
-                    title="Current"
+                    title={"Temperature: " + weatherItem.temp+ "F"}
+                    subheader={"Feels Like:" + weatherItem.feels_like + "F"}
                 />
                 <CardContent>
                     <Typography variant="body">
-                        stuff
+                        {weatherItem.weather[0].main}
                     </Typography>
-
                 </CardContent>
             </Card>
-        
+            </Grid>
+           )}
+           </Grid>
+
+
         </div>
     );
 }
 
 export default WeatherDisp;
+
+
+/*
+<CardMedia
+component="img"
+src={newsItem.media[0]["media-metadata"][0].url}
+alt={newsItem.media[0].caption}
+/>
+*/

@@ -22,7 +22,7 @@ function News (props) {
     const getNews = () => {
         fetch(url)
         .then((res) => res.json())
-        .then((data) => setNews(data.results));
+        .then((data) => setNews(data.results.slice(0,props.refresh)));
       }
     
       useEffect(() => {
@@ -31,6 +31,7 @@ function News (props) {
 
       if(newsData){
         console.log(newsData);
+        console.log(props.refresh);
 
         newsData.forEach((element, index) =>  {
             if(element.media.length === 0){
@@ -84,7 +85,7 @@ function News (props) {
                 </CardActions>
             </Card>
             </Grid>
-           )}
+            )}
            </Grid>
         </div>
         );

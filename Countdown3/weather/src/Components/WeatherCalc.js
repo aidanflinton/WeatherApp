@@ -3,6 +3,13 @@ import { useState, useEffect} from "react";
 import '../App.css';
 import WeatherDisp from './WeatherDisp.js';
 
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { breadcrumbsClasses } from '@mui/material';
+
 function WeatherCalc (props) {
     const openweather_key = process.env.REACT_APP_openweather_key;
 
@@ -14,6 +21,7 @@ function WeatherCalc (props) {
 
 
     const [weatherData, setWeatherData] = useState();
+    const [period, setPeriod] = useState();
 
     const generateWeather = () => {
         fetch(url)
@@ -25,17 +33,33 @@ function WeatherCalc (props) {
         generateWeather()
       }, [])
 
+      
+
       if(weatherData){
         console.log(weatherData);
         console.log(url);
 
-        let currentData = weatherData.current;
-        let hourlyData = weatherData.hourly;
-        let dailyData = weatherData.daily;
+        let weather=[[weatherData.current], weatherData.daily, weatherData.hourly];
 
         return (
         <div className="App">
-            <WeatherDisp weather={[currentData, hourlyData, dailyData]} />
+            {weather.map((time) =>           
+
+              <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>{}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>
+                  <WeatherDisp timeFrame={time}/>
+                </Typography>
+              </AccordionDetails>
+              </Accordion>
+            )}
         </div>
         );
       }
@@ -49,3 +73,4 @@ function WeatherCalc (props) {
 }
 
 export default WeatherCalc;
+
