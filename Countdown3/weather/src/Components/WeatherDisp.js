@@ -21,26 +21,29 @@ function WeatherDisp (props) {
             >
            {props.timeFrame.map((weatherItem)=> 
 
-            <Grid item xs={12} sm={6} md={3} key={props.timeFrame.indexOf(weatherItem)}>
 
-            <Card sx={{ minWidth: 275, maxWidth: 345}}>
-                <CardMedia
-                    component="img"
-                    src={"http://openweathermap.org/img/wn/"+ weatherItem.weather[0].icon+"@2x.png"}
-                    alt={weatherItem.weather[0].description}
-                />
-                <CardHeader 
-                    title={"Temperature: " + weatherItem.temp+ "F"}
-                    subheader={"Feels Like:" + weatherItem.feels_like + "F"}
-                />
-                <CardContent>
-                    <Typography variant="body">
-                        {weatherItem.weather[0].main}
-                    </Typography>
-                </CardContent>
-            </Card>
-            </Grid>
-           )}
+                    <Grid item xs={12} sm={6} md={3} key={props.timeFrame.indexOf(weatherItem)}>
+
+                    <Card sx={{ minWidth: 275, maxWidth: 345}}>
+                        <CardMedia
+                            component="img"
+                            src={"http://openweathermap.org/img/wn/"+ weatherItem.weather[0].icon+"@2x.png"}
+                            alt={weatherItem.weather[0].description}
+                        />
+                        <CardHeader 
+                            title={Object.keys(weatherItem.temp).length === 0 ? "Temperature: " + weatherItem.temp+ "F" : "Temperature: " + weatherItem.temp.day+ "F"}
+                            subheader={Object.keys(weatherItem.temp).length === 0 ? "Feels Like:" + weatherItem.feels_like + "F" : "Feels Like:" + weatherItem.feels_like.day + "F"}
+                        />
+                        <CardContent>
+                            <Typography variant="body">
+                                {weatherItem.weather[0].main}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                    </Grid>
+                
+
+)}
            </Grid>
 
 

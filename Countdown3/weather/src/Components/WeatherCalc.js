@@ -40,6 +40,7 @@ function WeatherCalc (props) {
         console.log(url);
 
         let weather=[[weatherData.current], weatherData.daily, weatherData.hourly];
+        let period = ["Current", "Daily", "Hourly"];
 
         return (
         <div className="App">
@@ -51,7 +52,7 @@ function WeatherCalc (props) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>{}</Typography>
+                <Typography>{period[weather.indexOf(time)]}</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
