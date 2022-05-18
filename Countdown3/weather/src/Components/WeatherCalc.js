@@ -8,7 +8,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { breadcrumbsClasses } from '@mui/material';
 
 function WeatherCalc (props) {
     const openweather_key = process.env.REACT_APP_openweather_key;
@@ -19,9 +18,7 @@ function WeatherCalc (props) {
     url.searchParams.append("appid", openweather_key);
     url.searchParams.append("units", "imperial");
 
-
     const [weatherData, setWeatherData] = useState();
-    const [period, setPeriod] = useState();
 
     const generateWeather = () => {
         fetch(url)
@@ -43,7 +40,7 @@ function WeatherCalc (props) {
         let period = ["Current", "Daily", "Hourly"];
 
         return (
-        <div className="App">
+        <>
             {weather.map((time) =>           
 
               <Accordion>
@@ -61,7 +58,7 @@ function WeatherCalc (props) {
               </AccordionDetails>
               </Accordion>
             )}
-        </div>
+        </>
         );
       }
       else{

@@ -1,17 +1,15 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import { useState, useEffect } from "react";
 import '../App.css';
 
 function WeatherDisp (props) {
     return(
-        <div className="App">
+        <>
             <Grid
                 container
                 spacing={2}
@@ -20,8 +18,6 @@ function WeatherDisp (props) {
                 justify="center"
             >
            {props.timeFrame.map((weatherItem)=> 
-
-
                     <Grid item xs={12} sm={6} md={3} key={props.timeFrame.indexOf(weatherItem)}>
 
                     <Card sx={{ minWidth: 275, maxWidth: 345}}>
@@ -41,13 +37,9 @@ function WeatherDisp (props) {
                         </CardContent>
                     </Card>
                     </Grid>
-                
-
-)}
+            )}
            </Grid>
-
-
-        </div>
+        </>
     );
 }
 

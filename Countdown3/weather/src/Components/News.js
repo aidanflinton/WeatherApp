@@ -50,7 +50,7 @@ function News (props) {
 
 
         return (
-        <div className="App">
+        <>
             <Grid
                 container
                 spacing={2}
@@ -87,7 +87,7 @@ function News (props) {
             </Grid>
             )}
            </Grid>
-        </div>
+        </>
         );
       }
       else{

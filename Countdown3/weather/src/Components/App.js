@@ -9,15 +9,15 @@ function App() {
       <header className = "App-header">
         Weather
       </header>
-      <>
+      <div className="App-body">
         <LocInput></LocInput>
-      </>
+      </div>
       <header className = "App-header">
         News
       </header>
-      <>
+      <div className="App-body">
         <LoadNews></LoadNews>
-      </>
+      </div>
     </div>
   );
 }

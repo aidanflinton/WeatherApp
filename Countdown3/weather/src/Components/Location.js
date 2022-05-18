@@ -29,11 +29,11 @@ function Location(props) {
         console.log(locData);
         console.log(url);
         return (
-        <div className="App">
+        <>
             {locData.lat}
             {locData.lon}
             <WeatherCalc longitude={locData.lon} latitude={locData.lat}/>
-        </div>
+        </>
         );
       }
       else{
